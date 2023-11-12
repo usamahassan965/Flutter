@@ -1,0 +1,414 @@
+### classes
+
+void main(){
+  
+  // classes
+  print(Cookie());
+  print(Cookie().size);
+  Cookie().baking();
+  print(Cookie().isCooling());
+  
+  final cookie = Cookie();
+  cookie.baking();
+  
+  cookie.shape = 'Rectangle';
+  print(cookie.shape);
+}
+
+class Cookie {
+  
+  // attributes , methods
+  String shape = 'circle';
+  double size = 15.2;
+  
+  void baking(){
+    print('Baking has started!');
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Constructor
+
+void main(){
+  
+  final cookie = Cookie('Circle',10.2);
+  print('Shape of Cookie: ${cookie.shape}');
+}
+
+
+class Cookie {
+  String shape ;
+  double size ;
+  
+  // constructor of Cookie class
+ // this - instance of cookie class
+  Cookie(this.shape,this.size){
+    
+    print('Cookie constructor called!');
+    baking();
+  }
+  
+  
+  
+  void baking(){
+    print('Baking has started!');
+    
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Positional Constructor arguments
+
+void main(){
+  
+  final cookie = Cookie('Circle',10.2);
+  print('Shape of Cookie: ${cookie.shape}');
+}
+
+
+class Cookie {
+  String? shape ;
+  double? size ;
+  
+  // Positional constructor arguments
+  Cookie(String first,double second){
+    shape = first;
+    size = second;
+    print('Cookie constructor called!');
+    baking();
+  }
+  
+  
+  
+  void baking(){
+    print('Baking has started!');
+    
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Immutable classes
+
+void main(){
+  
+  final cookie = Cookie('Circle',10.2);
+  print('Shape of Cookie: ${cookie.shape}');
+}
+
+
+class Cookie {
+  // Immutable classes
+  final String? shape ;
+  final double? size ;
+  
+
+  Cookie(this.shape,this.size){
+    print('Cookie constructor called!');
+    baking();
+  }
+  
+  
+  
+  void baking(){
+    print('Baking has started!');
+    
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Named Constructor arguments
+
+void main(){
+  
+  final cookie = Cookie(shape:'Circle',size: 10.2);
+  print('Shape of Cookie: ${cookie.shape}');
+}
+
+
+class Cookie {
+  final String? shape ;
+  final double? size ;
+  
+  // Named constructor arguments
+  Cookie({ required this.shape,required this.size}){
+    print('Cookie constructor called!');
+    baking();
+  }
+  
+  
+  
+  void baking(){
+    print('Baking has started!');
+    
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Private variables
+
+void main(){
+  
+  final cookie = Cookie(shape:'Circle',size: 10.2);
+  print(cookie._height);
+  print(cookie.calcArea());
+  print('Shape of Cookie: ${cookie.shape}');
+}
+
+
+class Cookie {
+  // Immutable classes
+  final String? shape ;
+  final double? size ;
+  
+  // private variables : start with underscore
+  // Private variables are accessible in the same file in which they are defined.
+  // However, can't accessed through other files.
+  final int _height = 20;
+  final int _width = 10;
+  
+  // Named constructor arguments
+  Cookie({ required this.shape,required this.size}){
+    print('Cookie constructor called!');
+    baking();
+  }
+  
+  int calcArea(){
+    return _height*_width;
+  }
+  
+  
+  
+  void baking(){
+    print('Baking has started!');
+    
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Getters
+
+void main(){
+  
+  final cookie = Cookie(shape:'Circle',size: 10.2);
+  
+  print(cookie._height);
+  print(cookie.calcArea());
+  
+  print('Shape of Cookie: ${cookie.shape}');
+  
+  // Read only attribute
+  print(cookie.height);
+}
+
+
+class Cookie {
+  // Immutable classes
+  final String? shape ;
+  final double? size ;
+  
+  // private variables : start with underscore
+  // Private variables are accessible in the same file in which they are defined.
+  // However, can't accessed through other files.
+  final int _height = 20;
+  final int _width = 10;
+  
+  // Getters for Private variables : Read only value
+  int get height => _height;
+  
+  // Named constructor arguments
+  Cookie({ required this.shape,required this.size}){
+    print('Cookie constructor called!');
+    baking();
+  }
+  
+  int calcArea(){
+    return _height*_width;
+  }
+  
+  
+  
+  void baking(){
+    print('Baking has started!');
+    
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Setters
+
+void main(){
+  
+  final cookie = Cookie(shape:'Circle',size: 10.2);
+  
+  print(cookie._height);
+  print(cookie.calcArea());
+  
+  print('Shape of Cookie: ${cookie.shape}');
+  
+  // Read only attribute
+  print(cookie.height);
+  
+  // Read and write only attribute
+  cookie.setHeight = 15;
+  print(cookie.height);
+}
+
+
+class Cookie {
+  // Immutable classes
+  final String? shape ;
+  final double? size ;
+  
+  // private variables : start with underscore
+  // Private variables are accessible in the same file in which they are defined.
+  // However, can't accessed through other files.
+  int _height = 20;
+  final int _width = 10;
+  
+  // Getters for Private variables : Read only value
+  int get height => _height;
+  
+  // Setters for Private variables 
+  set setHeight(int h){
+    _height = h;
+  }
+  
+  // Named constructor arguments
+  Cookie({ required this.shape,required this.size}){
+    print('Cookie constructor called!');
+    baking();
+  }
+  
+  int calcArea(){
+    return _height*_width;
+  }
+  
+  
+  
+  void baking(){
+    print('Baking has started!');
+    
+  }
+  
+  bool isCooling(){
+    return false;
+  }
+}
+
+
+### Static Variables
+
+void main(){
+  
+  final constants = Constants();
+  
+  print(constants.bye);
+  // Accessing static variable through class itself
+  print(Constants.greeting);
+  
+  
+  
+}
+
+class Constants {
+  
+  // static variables: Accessed without instantiating object
+  // To save memory 
+  static String greeting = 'How are you?';
+  String bye = 'Bye';
+}
+
+
+### Static function
+
+void main(){
+  
+  final constants = Constants();
+  
+  print(constants.bye);
+  
+  // Accessing static variable through class itself
+  print(Constants.greeting);
+  
+  // Accessing static function through class itself
+  print(Constants.someVal());
+  
+  
+  
+}
+
+class Constants {
+  
+  // static variables: Accessed without instantiating object
+  // To save memory 
+  static String greeting = 'How are you?';
+  String bye = 'Bye';
+  
+  // static function
+  static int someVal(){
+    return 10;
+  }
+}
+
+
+### When to use static keyword
+
+void main(){
+  
+  final constants = Constants();
+  
+  print(constants.bye);
+  
+  // Accessing static variable through class itself
+  print(Constants.greeting);
+  
+  // Accessing static function through class itself
+  print(Constants.someVal());
+  
+  
+  
+}
+
+class Constants {
+  
+  // static variables: Accessed without instantiating object
+  // To save memory
+  // But parameters passed through constructor should not be made static
+  static String greeting = 'How are you?';
+  String bye = 'Bye';
+  
+  // static function
+  static int someVal(){
+    return 10;
+  }
+}
+
+

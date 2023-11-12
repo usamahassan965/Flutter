@@ -1,0 +1,140 @@
+### if condition
+
+bool isAllowed = false;
+
+// defining above variable in the function will make condition dead code
+
+void main(){
+  
+  int age = 19;
+  if (age>= 21 && !isAllowed){
+    print('Adult 21');
+  }
+  else if (age>=18) {
+    print('Adult');
+  }
+  else {
+    print('Child');
+  }
+  
+  
+}
+
+
+### Ternary Conditions
+
+
+void main(){
+  
+  
+  String name = 'Usama Hassan';
+  
+  // alternative of if else condition (Ternary condition)
+  String val = name.startsWith('U') ? 'Wow' : 'Hi';
+  
+  print(val);
+}
+
+
+### Switch Statement
+
+
+void main(){
+  
+  // switch statement
+  String val = 'Hi';
+  
+  switch(val){
+    case 'Hi!':
+      print('Usama');
+    case 'Hello':
+      print('Hassan');
+    default:
+      print('Usama Hassan');
+  }
+  
+  String name = 'Hello';
+  int age = 21;
+  
+  switch(name){
+    case 'Hi' when age>=20:
+      print('Hi Usama!');
+    case 'Hello' when age>19:
+      print('Yooo!');
+  }
+}
+
+
+### for loop
+
+
+void main(){
+  
+  for (int i=0; i<10 ; i+=2){
+    String name = 'Hello World';
+    print(name.substring(i));
+    print(i);
+  }
+  
+  String val = 'Hello';
+  for (int j = 0; j<val.length;j++){
+    print(val[j]);
+  }
+}
+
+
+### while loop
+
+void main(){
+  
+  int i = 0;
+  while (i <10){
+    
+    print(i);
+    i += 2;
+  }
+}
+
+
+### do while loop
+
+
+void main(){
+  int i = 0;
+  do {
+    print('Hello');
+    i += 2;
+  }
+  while (i < 10);
+}
+
+
+### continue keyword
+
+void main(){
+  
+  // continue skips the iteration
+  for (int i=0; i<10 ; i++){
+    if (i % 2 == 0){
+      continue;
+    }
+    print(i);
+    
+  }
+}
+
+
+### break keyword
+
+void main(){
+  
+  // continue skips the iteration
+  for (int i=1; i<10 ; i++){
+    if (i == 8){
+      break;
+    }
+    print(i);
+    
+  }
+}
+

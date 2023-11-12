@@ -1,0 +1,122 @@
+### Print Statement
+
+void main(){
+  
+  print('Hello World');
+  print(3);
+  print('3');
+}
+
+
+### Operators
+
+void main(){
+  
+  print(3+2-7*8);
+  
+  print('3''2');
+  
+  print('3'*2);
+  
+}
+
+
+### Comments
+
+void main(){
+  
+  // Single Line Comments
+  
+  /* Multi Line 
+   Comments */
+  
+  
+}
+
+
+### Variables
+
+void main(){
+  
+  // datatype variablename = value;
+  
+  int firstval = 10;
+  int secondval = 20;
+  
+  print(firstval);
+  print(secondval);
+  
+  // allows decimal points too
+  double firstvalue = 20;
+  print(firstvalue);
+  
+  
+  String name = 'Usama Hassan';
+  print(name);
+  
+  
+  bool ask = true;
+  print(ask);
+  
+  // allows any datatype value
+  dynamic variable = 50;
+  dynamic var2 = 'hello $name';
+  print(variable);
+  print(var2);
+  
+  // Like dynamic but specifies the datatype to the variable acc. to the value assigned to it.
+  var var3 = 10;
+  var var4 = 'Hello';
+  print(var3);
+  print(var4);
+  
+  // can't changed again
+  const value = '100';
+  print(value);
+  
+  // value assigned only once but now final is replaced by const datatype
+  final val5 = 0;
+  print(val5);
+  
+}
+
+
+### final vs const
+
+void main(){
+  
+  
+  // Diff b/w final and const
+  // final is assigned only once
+  // const is assigned fixed value
+  
+  final someVal = DateTime.now();
+  const someVal2 = DateTime.now();
+  
+  print(someVal);
+  print(someVal2);
+}
+
+
+### Optional Nullable Variables
+
+void main(){
+  
+  // Nullable variables
+  
+  int? val;
+  print(val);
+  print(val?.bitLength);
+  
+  val = 2;
+  print(val);
+  
+  String? val2;
+  print(val2);
+  
+  val2 = 'Hello';
+  print(val2);
+  
+}
+
+

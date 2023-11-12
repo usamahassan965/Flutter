@@ -1,0 +1,382 @@
+### inheritance
+
+void main(){
+  
+  // inheritance
+  Car car = Car();
+  
+  print(car.wheels);
+  print(car.isEngine);
+  
+  Truck truck = Truck();
+  print(truck.wheels);
+  print(truck.speed);
+  
+  // We can't access attributes of Car class here as datatype is Vehicle type
+  Vehicle car1 = Car();
+  print(car1.isEngine);
+  print(car1.speed);
+  
+  // To access Car attributes use 'as'
+  print((car1 as Car).wheels);
+  
+  // We can't access other object properties in this way
+  //print((car1 as Truck).wheels);
+  
+  // multiple inheritance not allowed
+   
+  final car2 = Car();
+  car2.accelerate();
+  print(car2.speed);
+  
+  
+  
+}
+
+class Automobile{
+  int speed = 10;
+  
+  void accelerate(){
+    speed += 50;
+  }
+}
+
+class Vehicle extends Automobile{
+  
+  bool isEngine = false;
+  bool isLight = true;
+  
+  // method overriding
+  @override
+  void accelerate(){
+    speed += 30;
+  }
+}
+
+class Car extends Vehicle{
+  
+  int wheels = 4;
+  
+  void printWheels(){
+    
+    print(wheels);
+    
+  }
+  
+}
+
+class Truck extends Vehicle{
+  
+  int wheels = 8;
+  
+  void printWheels(){
+    
+    print(wheels);
+    
+  }
+  
+}
+
+
+### implements keyword
+
+void main(){
+  
+  // implements: Overriding required for all attributes and methods of parent class
+  Car car = Car();
+  
+  print(car.wheels);
+  print(car.isEngine);
+  
+  Truck truck = Truck();
+  print(truck.wheels);
+  print(truck.speed);
+  
+  Vehicle car1 = Car();
+  print(car1.isEngine);
+  print(car1.speed);
+  
+  print((car1 as Car).wheels);
+  
+  
+   
+  final car2 = Car();
+  car2.accelerate();
+  print(car2.speed);
+  
+  
+  
+}
+
+
+
+class Vehicle{
+  int speed = 10;
+  bool isEngine = false;
+  bool isLight = true;
+  int wheels = 10;
+  
+  // method overriding
+  void accelerate(){
+    speed += 30;
+  }
+}
+
+class Car implements Vehicle{
+  @override
+  int wheels = 4;
+  @override
+  int speed = 10;
+  @override
+  bool isEngine = false;
+  @override
+  bool isLight = true;
+  
+  void printWheels(){
+    
+    print(wheels);
+    
+  }
+  
+  @override
+  void accelerate(){
+    speed += 30;
+  }
+  
+}
+
+class Truck implements Vehicle{
+  @override
+  int wheels = 8;
+  @override
+  int speed = 10;
+  @override
+  bool isEngine = false;
+  @override
+  bool isLight = true;
+  
+  void printWheels(){
+    
+    print(wheels);
+    
+  }
+  @override
+  void accelerate(){
+    speed += 30;
+  }
+  
+  
+}
+
+
+### super keyword
+
+void main(){
+  
+  // implements: Overriding required for all attributes and methods of parent class
+  Car car = Car();
+  
+  print(car.wheels);
+  print(car.isEngine);
+  
+  
+  Vehicle car1 = Car();
+  print(car1.isEngine);
+  print(car1.speed);
+  
+  print((car1 as Car).wheels);
+  
+  
+   
+  final car2 = Car();
+  car2.accelerate();
+  print(car2.speed);
+  
+  
+  
+}
+
+
+class Vehicle{
+  int speed = 10;
+  bool isEngine = false;
+  bool isLight = true;
+  int wheels = 10;
+  
+  void accelerate(){
+    speed += 30;
+  }
+}
+
+class Car extends Vehicle{
+  
+  
+  void printWheels(){
+    // super keyword : to access parent class attributes and methods
+    super.accelerate();
+    super.isEngine;
+    super.isLight;
+    super.wheels;
+    print(wheels);
+    
+  }
+  
+}
+// We can extend and implement from different classes
+class Bike extends Vehicle implements Car{
+  
+  @override
+  void printWheels(){
+    print(wheels);
+  }
+}
+
+
+### abstract classes
+
+void main(){
+  
+}
+
+
+// abstract class
+// Normal classes are just implicit abstract classes
+// abstract class can be extended but can't be implemented
+// Further , we can initialize methods without defining them.
+
+abstract class Vehicle{
+  void accelerate();
+  int wheels = 10;
+}
+
+class Car extends Vehicle{
+  
+  @override
+  void accelerate(){
+    print('accelerating...');
+    print(wheels);
+  } 
+  
+}
+
+
+### Polymorphism
+
+void main(){
+  
+  // Polymorphism: Object Taking multiple forms
+  
+  Animal cat = Cat();
+  cat.sound();
+  
+  // We can assign cat object Dog instance as Dog is inheriting Animal and cat is also type of Animal
+  cat = Dog();
+  cat.sound();
+  
+}
+
+
+class Animal {
+  void sound(){
+    print('Animal making sound');
+    
+  }
+}
+
+class Cat extends Animal{
+  @override
+  void sound(){
+    print('Cat making sound');
+    
+  }
+  
+}
+
+class Dog extends Animal{
+  @override
+  void sound(){
+    print('Dog making sound');
+    
+  }
+  
+}
+
+
+### mixins
+
+void main(){
+  
+  // mixin 
+  // Animal has not any parent/child relation with Jump
+  // mixin is just for making its code reusable for others
+  final animal = Animal();
+  animal.fn();
+}
+
+mixin Jump {
+  int jumping = 10;
+}
+
+mixin Scream {
+  bool isScreaming = false;
+}
+
+class Animal with Jump,Scream {
+  
+  void fn(){
+    
+      print(jumping);
+      print(isScreaming);
+
+  }
+}
+
+
+### class modifier
+
+void main(){
+  
+  // class modifier
+  // sealed is a class modifier 
+  // Handles errors regarding not defining case statements which must be defined for execution of switch statement
+  Animal animal = Cat();
+  
+  switch(animal){
+    case Dog():
+      print('Dog');
+      
+    case Cat():
+      print('Cat');
+    
+    case Human():
+      print('Human');
+  }
+}
+
+sealed class Animal {}
+
+class Human implements Animal {}
+
+class Dog implements Animal {}
+
+class Cat implements Animal {}
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

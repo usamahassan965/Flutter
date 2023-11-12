@@ -1,0 +1,17 @@
+### Exception Handling
+
+void main(){
+  
+  // Exception Handling
+  // finally block will always be executed
+  try {
+     print(10/0);
+  }
+  catch (e) {
+    print(e);
+  }
+  finally {
+    print('Finally Block execeuteed!');
+  }
+  
+}

@@ -1,0 +1,170 @@
+### Lists
+
+void main(){
+  
+  // Generic List
+  List list = [10,20,'Usama',false];
+  print(list[0]);
+  
+  // List of pure integers. Similarly, we can do this with classes also (defining type specific classes)
+  List<int> list1 = [10,20,30];
+  print(list1[2]);
+  
+  // list of Student type
+  List<Student> student = [ Student('Usama'),
+                            Student('Haider'),
+                            Student('Hashir')];
+  print(student);
+  print(student[0].name);
+  
+  student.add(Student('New Kid'));
+  print(student);
+  
+  // conditioning in lists
+  
+  final filtered = student.where((student) => student.name == 'Usama');
+  print(filtered);
+  
+}
+
+class Student {
+  final String name;
+  
+  Student(this.name);
+  
+  // We can override builtin methods too
+  @override
+  String toString() => 'Student: $name';
+}
+
+
+### Maps
+
+void main(){
+  
+  // map: key-value pairs
+  //final list = [10,20,30];
+  
+  Map<String,int> marks = { 'Usama': 10,
+                'Haider': 20,
+                 'hashir': 30};
+  print(marks['Usama']);
+  
+  // appling for loop through map method
+  marks.forEach((key,val){
+    print('$key : $val');
+  });
+  
+  List<Map<String,int>> mark = [{'Math':20,
+                                 'English':30,
+                                  'Urdu': 40},
+                                 marks];
+  // map method iterates through list
+  mark.map((e){
+    print(e);
+  }).toList();
+  
+  print('\n');
+  mark.map((e){
+    e.forEach((key,val){
+      print('$key : $val');
+    });
+  }).toList();
+  
+  
+}
+
+class Student {
+  
+  final String name;
+  final int marks;
+  
+  Student(this.name,this.marks);
+  
+  @override
+  String toString() => 'Student: $name';
+}
+
+
+### Enums
+
+void main(){
+  
+  // Enums: Enumerators
+  // Help us providing restrictions and thus increase code quality
+  final emp1 = Employee('Usama', EmployeeType.se);
+  final emp2 = Employee('Haider',EmployeeType.cs);
+  
+  // Here, it helps in handling all cases of switch statement easily
+  
+  emp1.fn();
+  emp2.fn();
+  
+  
+  
+}
+
+enum EmployeeType {
+  se,cs,it
+}
+
+class Employee {
+ 
+  final String name;
+  final EmployeeType type;
+  
+  Employee(this.name,this.type);
+  
+  void fn(){
+    
+    switch(type){
+      case EmployeeType.se:
+        print('Software Engineer');
+      case EmployeeType.cs: 
+        print('Computer Science');
+      case EmployeeType.it:
+        print('Information Tech');
+    }
+  }
+}
+
+
+### Enhanced Enums
+
+void main(){
+  
+  // Enums: Enumerators
+  // Help us providing restrictions and thus increase code quality
+  final emp1 = Employee('Usama', EmployeeType.se);
+  final emp2 = Employee('Haider',EmployeeType.cs);
+  
+  // Here, it helps in handling all cases of switch statement easily
+  
+  emp1.fn();
+  emp2.fn();
+  
+  
+  
+}
+
+// Enhanced Enums
+enum EmployeeType {
+  se(20000),
+  cs(30000),
+  it(10000);
+  
+  final int salary;
+  const EmployeeType(this.salary);
+}
+
+class Employee {
+ 
+  final String name;
+  final EmployeeType type;
+  
+  Employee(this.name,this.type);
+  
+  void fn(){
+    print('${type.name}: ${type.salary}');
+  }
+}

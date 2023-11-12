@@ -1,0 +1,158 @@
+### Futures (Promises)
+
+// Below is first way of running asnchronous code 
+void main() async{
+  
+  // Futures (Promises in JS)
+  // In external apis, we don't know that it will run or not
+  // Bcz its not dependent on ur code only, it can depend on the internet stability
+  // For such cases, futures are mostly used in exception handling
+  // Futures is a class that represents a function or computation which may complete in future
+  // which will either produce some required output or error
+  // It is related to asynchronous programming.
+  // Asynchronous allows u to perform tasks concurrently without blocking the execution unlike the block of code which run synchronously (line by line)
+  // Like when we make a request for data retrieving from some external api , we don't have to wait for it to execute completely and block the remaining code . 
+  // So in asynchronous, while waiting for data retrieval , the remaining code lines will be performed.
+    
+  
+  
+  Future<String> giveresultafter2sec(){
+    
+    return Future((){
+          return 'Hey';
+    });
+    
+  }
+  
+  
+  final variable = await giveresultafter2sec();
+  print(variable);
+
+  
+}
+
+
+// Below is second way of running asynchronous code
+
+void main() async {
+
+  
+  Future<String> giveresultafter2sec(){
+    // Delay of 2 seconds (optional)
+    return Future.delayed(const Duration(seconds: 2),() async {
+          return 'Hey';
+    });
+    
+  }
+  
+  print('Hello');
+  final variable =  await giveresultafter2sec();
+  print(variable);
+
+  
+}
+
+
+// Below is third way of running the asynchronous code
+
+void main() {
+
+  // In this, Hello will print first
+  // Then, function will wait 2 seconds
+  // Meanwhile last print statement will be performed
+  // After 2 seconds , Hey will print out.
+  Future<String> giveresultafter2sec(){
+    // Delay of 2 seconds (optional)
+    return Future.delayed(const Duration(seconds: 2),() async {
+          return 'Hey';
+    });
+    
+  }
+  
+  print('Hello');
+  giveresultafter2sec().then((val){
+    
+    print(val);
+    
+  });
+  print('Hellooo');
+  
+}
+
+// Here, we have practical example of using external api or servers for data retrieval
+
+// First pkg is from pub dev
+// Second pkg is from dart itself implementd
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void main() async {
+  
+  var url = Uri.https('jtonplaceholder.typicode.com', 'users');
+  try{
+    final res = await http.get(url);
+  
+    print(jsonDecode(res.body)[0]['name']);
+  }
+  catch (e){
+    print(e);
+    
+  }
+  
+  
+}
+
+// We can also do the above task in this way defined below
+
+// First pkg is from pub dev
+// Second pkg is from dart itself implementd
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+void main() {
+  
+  var url = Uri.https('jtonplaceholder.typicode.com', 'users');
+  http.get(url).then((val){
+  print(jsonDecode(val.body)[0]['name']);}).catchError((err)
+  {
+      print(err);
+    }); 
+  
+}
+
+
+### Stream
+
+// Stream is also related to asynchronous programming
+// But in this, we get updated values from time to time from external api/server
+// For this, we don't make a request like in future rather we subscribe to an event (Event is whether the values change or not)
+// In this way, we get updated time to time and we have sequence of values in the end.
+// async* is used where Stream concept is used
+void main() async{
+  
+  //print(await countDown().first); //will print first value
+  // this stream func allows to pause, resume, cancel the flow of data coming to us
+  // onDone is a data handler of stream
+  countDown().listen((val){
+    print(val);
+  }, onDone: (){
+    print('Completed!');
+  });
+  
+}
+
+// Due to async* , we can't use return bcz of stream creation 
+Stream<int> countDown() async* {
+  
+  for(int i=5;i>0;i--){
+    yield i;       // for generating values one by one
+    await Future.delayed(const Duration(seconds: 1));
+  }
+}
+
+// Similarly, we have another way to create a countdown using stream controller where we may pause , resume, it.
+
+
+

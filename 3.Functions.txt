@@ -1,0 +1,211 @@
+### functions
+
+void main(){
+  
+  // functions
+  
+  printName();
+  print(name());
+  
+  int numval = number();
+  print(numval);
+  
+}
+
+void printName(){
+  
+  print('Usama');
+}
+
+String name(){
+  return 'Usama Hassan';
+}
+
+int number(){
+  return 12;
+}
+
+
+### Return 2 values from a function (Records)
+
+void main(){
+  
+  // return 2 values from a function
+  
+  print(printName());
+  
+  print(user().$1);
+  print(user().$2);
+  print(user().$3.runtimeType);
+  
+}
+
+(int,String) printName(){
+  
+  return (12, 'Hassan');
+}
+
+(int,String,bool,String) user(){
+  return (12,'Usama',true,'Hassan');
+}
+
+
+### Patterns
+
+void main(){
+  
+  // patterns
+  var (age,name,isAdult) = user();
+  print(age);
+  print(name);
+  
+}
+
+(int,String,bool) user(){
+  
+  return (12,'Usama',true);
+}
+
+
+### Return Nullable Variable values
+
+void main(){
+  
+  // Return nullable variable values
+  print(user());
+  name();
+}
+
+String? user(){
+  
+  print('Usama');
+  return null;
+}
+
+void name(){
+  return;
+}
+
+
+### Function Positional Arguments & Global Variables
+
+// Global variables
+String name = 'Hassan h1';
+
+void main(){
+  
+  // Function Positional Arguments & Global variables
+  String username = 'Usama';
+  user(username);
+  
+  // dynamic positional arguments
+  userid('Hello');
+  userid(12);
+  userid(true);
+  
+  // dynamic funcion type
+  print(userName(username));
+  
+  printName();
+  
+  
+}
+
+void user(String name){
+  print(name);
+}
+
+void userid(variable){
+  print(variable);
+}
+
+
+userName(String userName){
+ // print('Usama');
+  return userName;
+}
+
+void printName(){
+  print(name);
+}
+
+
+### Function named arguments
+
+void main(){
+  
+  // function named arguments
+  // Here, name and age are named arguments
+  String name = 'Usama';
+  int age = 16;
+  printName('Hello',name:name,age:age);
+}
+
+void printName(String greeting,{required String name, required int age}){
+  
+  
+  print(greeting+' '+name);
+  print(age);
+}
+
+
+### Named Records
+
+void main(){
+  
+  // Named Records 
+  final stuff = printName();
+  print(stuff.age);
+  print(stuff.name);
+}
+
+({int age, String name}) printName(){
+  return (age: 12,name : 'Usama');
+}
+
+
+### Return a function from a function
+
+void main(){
+  
+  // Return function from a function
+  // use keyword : Function
+  final stuff = printStuff();
+  stuff();
+  
+  
+}
+
+Function printStuff(){
+  
+  return (){
+    print('Hello');
+  };
+}
+
+
+### Arrow Function
+
+void main(){
+  
+  // Arrow function: To make function look cleaner
+  final name = arrowfunc();
+  print(name);
+  
+}
+
+String arrowfunc() => 'Hello';
+
+
+### Anonymous Functions
+
+void main(){
+  
+  // Anonymous Functions: Don't have any name but behave like a function.
+  (){
+    print('Hey');
+  };
+  
+}
+
+
